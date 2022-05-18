@@ -1,0 +1,83 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Deconvolution with Inverse and Weiner Filters</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>042cdeb1-67e8-4c73-95e7-4805c8548852</md:uuid>
+</metadata>
+  <content>
+   <section id="problem_stmnt">
+<title>Problem Statement</title>
+<para id="para1">
+	The first task is to deconvolve the reference pulse from all the measured waveforms to obtain the actual projections of our specimen. In general the <link document="m12472">deconvolution</link> problem can be modeled as in the following figure.
+</para>
+<figure id="fig1">
+<title>Block diagram of our system</title>
+<media id="idp9909824" alt=""><image src="../../media/deconvolution2.JPG" mime-type="image/jpeg"/></media>
+</figure>
+<para id="block_descr">
+	In the above figure, p(t) is the projection of the object slice that is to be used in the object reconstruction. The reference pulse is denoted by r(t) and interpreted as a low- pass degradation filter that convolves with the projections. The result of this convolution plus an additive noise n(t) is the measured waveforms s(t). In this case, both r(t) and s(t) are known and the goal is to obtain p(t) by deconvolving r(t) from s(t) and denoising. Mathematically the above block diagram can be written as:
+<figure id="eq1">
+<media id="idp10247216" alt=""><image src="../../media/eq1.gif" mime-type="image/gif"/></media>
+</figure>
+</para>
+</section>
+<section id="inverse"><title>Inverse Filter</title>
+<para id="para2">   
+	Most of deconvolution schemes are implemented in the frequency domain. This makes sense since convolution in the time domain is mapped as multiplication in the frequency domain. <link document="m12182">Inverse filtering</link> is the simplest and most naïve method for deconvolution. No denoising takes place in this case. 
+</para>
+<para id="para3">
+Equation 1 can be written in the frequency domain as:
+
+<figure id="eq2">
+<media id="idp1015376" alt=""><image src="../../media/eq2.gif" mime-type="image/gif"/></media>
+</figure>
+
+where S(ω), R(ω) and P(ω) are the Fourier transforms of s(t), r(t) and p(t) respectively. 
+
+<figure id="eq3">
+<media id="idp8227008" alt=""><image src="../../media/eq3.gif" mime-type="image/gif"/></media>
+</figure>
+
+
+</para>
+<para id="para4">
+	The main drawback of the method is that R(ω) is usually a low-pass filter and therefore 1/R(ω) is a high-pass filter which attains large values as the frequency increases. Thus, equation (3) becomes numerically unstable for small R(ω) values and greatly amplifies the high- frequency noise contribution. This makes inverse filtering very sensitive to even the small amounts of high frequency noise which exists in the measured waveforms. 
+</para>
+<para id="para5">
+	One method of decreasing the noise sensitivity inherent when inverse filtering is to bound the frequency response 1/R(ω) to some threshold γ as follows:
+
+<figure id="eq41">
+<media id="idp729680" alt=""><image src="../../media/eq4.gif" mime-type="image/gif"/></media>
+</figure>
+
+</para>
+<para id="para6">The code that implements inverse filtering is <link resource="inverseFilter.m">inverseFilter.m</link>
+</para>
+</section>
+<section id="weiner"><title>Wiener Filter</title>
+<para id="para7">
+	One of the most widely used restoration techniques is the <link document="m12522">Wiener filter</link>. Contrary to the inverse filtering this method also attempts to diminish noise while restoring the original signal. It executes an optimal balance between inverse filtering and noise smoothing in the mean square error sense. Assuming white Gaussian noise, the Wiener filter expressed in the Fourier domain is written as:
+
+<figure id="eq5">
+<media id="idm56000" alt=""><image src="../../media/eq5.gif" mime-type="image/gif"/></media>
+</figure>
+
+
+where Spp(ω) is the power spectrum of the input projection and σ2 is the variance of the Gaussian noise. The derivation of this formula is based on a stochastic framework and is beyond the scope of this project.
+</para>
+<para id="para8">
+	In this case the projections are unknown and an estimate of Spp is needed. This is provided by noting that Sss(ω)= Spp(ω)•|R(ω)|2, solving for Spp(ω) and substituting into equations (5) to get:
+
+<figure id="eq6">
+<media id="idp9568368" alt=""><image src="../../media/eq6.gif" mime-type="image/gif"/></media>
+</figure>
+
+
+</para>
+<para id="para9">
+	Interestingly, the last equation can be interpreted as two different filters in cascade in the frequency domain. The first is denoising, while the second is exactly the inverse filter considered in the previous section.
+</para>
+<para id="para10">The code that implements Wiener filtering is <link resource="wienerFilter.m">wienerFilter.m </link>.
+</para><para id="element-797"><link resource="Deconvo_script.m">Driver for filters</link></para>
+</section>
+  </content>
+  
+</document>

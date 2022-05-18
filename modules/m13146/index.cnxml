@@ -1,0 +1,110 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Introduction-Experimental Setup</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>30d1532b-54f6-41fa-bed1-d1eba665e81f</md:uuid>
+</metadata>
+<content>
+<section id="id30171242"><title> T-rays: appropriateness for imaging
+applications</title>
+<para id="id36290276"/>
+<para id="id30171274">Terahertz rays (T-rays) are pulses of sub-
+picosecond duration of electromagnetic radiation. They lie in the
+region on the electromagnetic spectrum between what is
+traditionally considered electronics and photonics. In practical
+implementations, picosecond bursts may be artificially generated in
+such a way so that they attain near linear phase and a broad
+fractional bandwidth in the Terahertz (THz) frequency range.
+Accordingly, it is possible to directly measure the temporal
+electric field using T- rays in a similar way that this is done for
+rays that lie in other regions on the electromagnetic spectrum.
+This allows probing depths of materials by looking at the arrival
+time of transmitted or reflected pulses. Note that one THz is equal
+to 1012 Hertz which corresponds to sub millimeter wavelengths in
+free space. Indeed, the wavelengths within the bandwidth of a
+typical T-ray are between 1 mm at 0.3 THz and 0.3 mm at 1 THz and
+evidently this can be translated into high temporal resolution (.3
+mm in transmission and .15 in reflection), in imaging and detection
+applications.
+<figure id="fig123">
+
+<media id="idm4754384" alt=""><image src="../../media/intro_fig1.JPG" mime-type="image/jpeg"/></media>
+</figure>
+</para>
+
+<para id="id36353538">In addition, T-rays have a number of unique
+material responses. On the one hand, plastics, papers, and many
+packaging materials are virtually transparent to T-rays. In fact,
+plastics work with T-rays similarly to glass with visible light. As
+an example, all of the lenses that are used in practice to suitably
+focus T-rays are made out of plastic and thus they can be readily
+machined. On the other hand, metals, such as Aluminum, are highly
+reflective. Water is strongly absorbing and T-rays cannot penetrate
+it, rendering biomedical imaging using T-rays of limited interest.
+However, T-rays can be used in package inspection or for
+manufacturing quality control. In 1995, Hu and Nuss took the first
+T-ray pictures of a semiconductor (see references). This work
+fueled interest in using T-rays for imaging in a number of
+applications and in a variety of configurations. NASA is using
+T-rays to inspect the foam on the shuttle tanks for defects, which
+is believed to have caused the Columbia accident.</para>
+</section>
+<section id="id36306705"> <title>Experimental setup that provided the data
+used in this project</title>
+<para id="id36353591">The present project uses experimental data
+obtained by a reflection computed tomography method utilizing
+T-rays (TRCT), proposed by J. Pearce, H. Choi, D. Mittleman, J. White, D. Zimdars (see
+references). In TRCT, the objective is to reconstruct the
+reflectivity edge map of an object’s thin tomographic slice. The
+setup of the TRCT imaging system is shown in the next figure. A THz
+transceiver is used in order to generate T-ray pulses and measure
+the back-reflected waveforms. A lens is placed in front of the
+transceiver to collimate the beam and then the cylindrical lens of
+focal length 12 cm focuses the beam in the vertical direction,
+confining it to a horizontal plane. The generated T-rays illuminate
+a thin cross-sectional slice of the object of interest. The object
+is placed on a rotation stage. It is rotated in 1 degree increments
+for 360 degrees and a measurement is taken at each viewing
+angle.
+<figure id="fig456">
+
+<media id="idm7508736" alt=""><image src="../../media/intro_fig2.JPG" mime-type="image/jpeg"/></media>
+</figure>
+</para>
+<para id="id36306785">The available experimental data for the
+purposes of this project concern the metal square post shown in the
+next picture. It is a square inch in dimensions and made of
+aluminum. The reason for the choice of this test object is that it
+contains both large and small features. The dents in the metal are
+less than 1 mm across and it is interesting to verify the spatial
+resolution capabilities of the T-rays to resolve these features.
+Aluminum is a strong reflector so the measured reflected waveform
+is substantial. Since aluminum is opaque, it is not expected that
+the screw hole will be resolved because none of the T-rays will
+reach it.
+<figure id="fig789">
+
+<media id="idm4393968" alt=""><image src="../../media/intro_fig3.JPG" mime-type="image/jpeg"/></media>
+</figure>
+</para>
+</section>
+<section id="id36306850"> <title> Two main steps for imaging the test
+object: I) Deconvolution, II) Reconstruction</title>
+<para id="id12267475">The techniques and signal processing
+algorithms that are used are completely analogous to reflection
+computed tomography used with ultrasonic rays (see references). It
+is evident from the experimental setup that reflections from points
+that lie on the wavefront will sum together. This corresponds to a
+parallel beam projection. Each reflected waveform is the
+convolution of the incident T-ray pulse with the projections of the
+object’s edge map.</para>
+<para id="id12193034">The plan of attack for image retrieval
+consists of 2 steps. First, the projections have to be deconvolved
+from the measured waveforms. Second, the reflectivity map of the
+object is obtained from the projections. Herein, in order to
+deconvolve the projections from measurements, two methods were
+attempted: Regularized inverse filtering and Wiener filtering.
+Next, the image retrieval procedure is accomplished by application
+of the Filtered Backprojection Algorithm. FBP filters each
+projection with a ramp filter and then backproject the filtered
+projections across image plane.</para></section>
+</content>
+</document>

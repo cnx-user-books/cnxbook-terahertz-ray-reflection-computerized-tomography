@@ -1,0 +1,68 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Backprojection Implementation</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e486ed5d-7ad8-42d8-ac9d-40111fe58b1b</md:uuid>
+</metadata>
+<content>
+
+<para id="id23581684">Our implementation uses three pieces of
+Matlab code: shrinkPR, filtersinc, and backproject.</para>
+<section id="id23446618">
+<title>ShrinkPR</title>
+<para id="id23352333">The original projection data was greatly
+over-sampled, taking over 20,000 samples in 400 picoseconds for
+each of the 360 angles. In order to reduce computation time, we
+uniformly reduced the number of samples and the number of angles.
+Our shrinkPR code takes the original PR matrix, a matrix whose
+columns are the projections, and outputs a smaller PR matrix with
+fewer samples and angles. It also creates a column vector, theta,
+which contains the angles of the corresponding projections.</para>
+</section>
+<section id="id23733279"><title>Filtersinc</title>
+<para id="id23532527">This code takes in the PR matrix and outputs
+the filtered PR matrix.</para>
+<para id="id23596197"><figure id="eq55">
+<media id="idm988976" alt=""><image src="../../media/back_eq5.gif" mime-type="image/gif"/></media>
+</figure></para>
+<para id="id23352305">It creates the ramp filter |ω| and multiplies
+it with the FFT of each projection. It then takes the IFFT of each
+filtered projection.</para>
+</section>
+<section id="id23192575"><title>Backproject</title>
+<para id="id23370921">Backproject implements the discrete
+approximation of :</para>
+<para id="id2292523"><figure id="eq56">
+<media id="idp425856" alt=""><image src="../../media/back_eq6.gif" mime-type="image/gif"/></media>
+</figure>
+</para>
+<para id="id23374496">This code backprojects each of the filtered
+projections over the image plane and sums them together to produce
+the final reconstructed image. In order to implement the continuous
+function given discrete data points, the “round” function was used,
+effectively interpolating the data.</para>
+</section>
+<section id="id23601496"><title>Representative Results</title>
+<para id="id23585334">The following are reconstructed
+images:</para>
+<para id="id23543780">1500 samples per projection and 360
+angles:</para>
+<para id="id23658217"><figure id="fig1">
+<media id="idm7810208" alt=""><image src="../../media/picture1.jpg" mime-type="image/jpeg"/></media>
+</figure></para>
+<para id="id17142949">From this image you can easily see the
+original object.</para>
+<para id="id23774674">1100 samples per projection and 360
+angles:</para>
+<para id="id3403359"><figure id="fig2">
+<media id="idp5647136" alt=""><image src="../../media/picture2.jpg" mime-type="image/jpeg"/></media>
+</figure></para>
+<para id="id23596398">This image is not as clear since fewer
+samples were used.</para>
+<para id="id23705680">1500 samples and angles 1-180.</para>
+<para id="id23372018"><figure id="fig3">
+<media id="idm993424" alt=""><image src="../../media/picture3.jpg" mime-type="image/jpeg"/></media>
+</figure></para>
+<para id="id3478899">From this image you can see the left half of
+the object since we used the first half of the projections.</para>
+</section>
+</content>
+</document>

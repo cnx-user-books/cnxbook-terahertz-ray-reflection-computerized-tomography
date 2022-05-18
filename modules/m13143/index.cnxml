@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Conclusions and References</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f30235db-d6a5-4012-bde1-00713d4719dd</md:uuid>
+</metadata>
+<content>
+<section id="concl"><title>Conclusions</title>
+<para id="id41072457">Using the terahertz reflected waveforms, we
+were able to measure the projections and reconstruct the original
+image. This process was completed in two steps. In the first,
+inverse and Wiener filtering were used to deconvolve the data from
+the reference pulse to obtain the actual projections of the test
+object. In the second, the Filtered Backprojection Algorithm
+featuring the Fourier Slice Theorem was used to filter the
+projections using a ramp filter and backproject the result over the
+image plane, thus reconstructing the image of the object.</para>
+<para id="id40760043">As far as the deconvolution part of the
+project concerns, the regularized inverse filter gives better
+results than Wiener filtering, as already pointed out. Care should
+be exercised when picking the regularized parameter γ, so as not to
+increase the noise level of the resulting signal. Usually, this is
+a case-dependent procedure that takes numerical experimentation. It
+should be noted that the original data at hand were of very good
+quality with low noise level. Thus the results of Wiener filtering
+were worse than those obtained by inverse filtering.</para>
+
+<para id="id41072496">For the reconstruction part, it was found
+that the number of projection angles used was vital to the clarity
+of the final image. We were able to greatly downsample the data and
+still maintain image quality to a certain point. Due to the size of
+the data, the algorithms ran for minutes.</para>
+</section>
+<section id="id41072522"><title>Future Work</title>
+<para id="id41072536">Much potential for future improvement and
+implementation is possible using this method of computerized
+tomography. Advanced deconvolution methods featuring wavelets for
+efficient noise reduction can be used for isolating the projections
+out of the measured waveforms. Furthermore, it seems reasonable to
+cut-off the first part of each measured waveform since it only
+contains noise and no useful information for the image
+reconstruction. This can be accomplished by appropriately windowing
+the raw measurements before any other manipulations takes place.
+Due to the linear nature of the process, different algorithm code
+could have been written to start reconstructing the image
+immediately after the first projection had been calculated. This
+and other efficiency tools could be implemented to greatly increase
+the speed of the overall reconstruction, making the process
+applicable for real-time use.</para>
+</section>
+<section id="id41072561"><title>References</title>
+<para id="id41072576">J. Pearce, H. Choi, D. M. Mittleman, J.
+White, and D. Zimdars, Opt. Lett. 30, 1653 (2005).</para>
+<para id="id41072613">A. C. Kak and M. Slaney, Principles of
+Computerized Tomographic Imaging (IEEE Press, 1988).</para>
+<para id="id40845304">J. S. Lim, Two- Dimensional Signal and Image
+Processing (Prentice- Hall Inc., 1990).</para>
+<para id="id40845356">D. M. Mittleman, S. Hunsche, L. Bovin, and M.
+C. Nuss, Opt. Lett. 22, 904 (1997).</para>
+<para id="id40845369">B. B. Hu and M. C. Nuss, Opt. Lett., 20, 1716
+(1995).</para>
+</section>
+</content>
+</document>

@@ -1,0 +1,47 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Reconstruction</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>414ed29a-7a60-4d5c-8570-83306e6c1c0f</md:uuid>
+</metadata>
+<content>
+
+<section id="fbp">
+<title>Theory of Filtered Backprojection Algorithm (FBP)</title>
+<para id="id27778402">The FBP algorithm allows us to take the
+projections, PӨ(t), developed in the previous sections and
+reconstruct the original image, f(x,y).</para>
+<para id="id28778068">A key idea is the Fourier Slice Theorem. It
+says that the Fourier Transform of a projection at an angle theta
+is equivalent to the values of the 2-dimensional Fourier Transform
+of the image evaluated along a radial line of the same angle.
+Knowing this fact, we are able to obtain the Fourier Transform of
+the image, F(u,v), from projections taken at multiple
+angles.</para>
+<para id="id3027203">We start with 2-dimensional Inverse Fourier
+Transform:</para>
+<para id="id2664234"><figure id="eq123">
+<media id="idp593968" alt=""><image src="../../media/rec_eq1.gif" mime-type="image/gif"/></media>
+</figure></para>
+<para id="id27954060">Since we have projections for given angles, a
+change to polar coordinates is useful.</para>
+<para id="id28770907"><figure id="eq456">
+<media id="idm5982528" alt=""><image src="../../media/rec_eq2.gif" mime-type="image/gif"/></media>
+</figure></para>
+<para id="id3643267">Using symmetry, this simplifies to:</para>
+<para id="id2"><figure id="eq7">
+<media id="idp2851408" alt=""><image src="../../media/rec_eq31.gif" mime-type="image/gif"/></media>
+</figure></para>
+<para id="id28316353">Using the Fourier Slice Theorem, we
+substitute in the Fourier Transform of the projection,
+SӨ(ω).</para>
+<para id="id14741629"><figure id="eq4441">
+<media id="idm6114368" alt=""><image src="../../media/rec_eq4.gif" mime-type="image/gif"/></media>
+</figure></para>
+<para id="id28773823">With this formula, we are now able to
+reconstruct the original image. We now see that that the FPB
+algorithm has certain benefits. We can begin reconstructing the
+image after the first projection has been calculated, since the
+image is built up by summing over all the angles. This could
+increase speed and practicality for real time applications.</para>
+</section>
+</content>
+</document>

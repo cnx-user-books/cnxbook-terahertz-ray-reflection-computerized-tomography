@@ -1,0 +1,28 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Description/Manipulation of Data</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>58110185-5c71-4e95-86f4-fa19e3de1cf6</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">The raw data at our disposal consisted of:
+<list id="data_list">
+<item>
+360 measured waveforms, one from each angle. Each waveform is a back- reflection of a transmitted THz pulse at different angles. 
+</item>
+<item>
+The reference pulse. This is the received signal reflected off a mirror placed at the center of the turning table. We need to know the shape of the emitting pulses in order to factor out its contribution from the measured waveforms.
+</item>
+<item>
+The background signal. This is obtained by just receiving the noise of the environment. No pulse is emitted and no specimen is placed on the turning table.
+</item>
+</list>
+All the above temporal signals were sampled with time step 0.016945 pico- seconds (ps) for 400 ps duration.
+
+    </para><para id="element-119"> In the first plot of figure 1 an example waveform (measured at 70 degrees) is plotted against the reference pulse and the background signal. Clearly, both the waveform and the pulse follow the trend of the background signal. This suggests that the background signal should be first subtracted from the reference pulse and all waveforms, before any other signal processing takes place. The second plot of the same figure shows the reference and the example waveform after subtracting the environmental interference. It should be noted that the background signal is mainly a result of random mechanical vibration of the transceiver and experiment setup, plus the environmental noise that always exists.  
+</para><para id="element-896"> An important observation on the second plot is that the reference pulse attains its maximum value just before 200 ps. This shows that it takes nearly 200 ps for the THz pulse to travel from the transceiver to the middle of the table and back. Moreover, the example waveform reaches the first local maximum at around 120 ps, which identifies the closest edge of the specimen. </para><para id="element-693">The initial part of the example waveform consists of only high frequency and very low magnitude noise. This is the case for all the measured waveforms, although the length of the initial noisy part differs. The noise exhibited in the initial parts is representative of the noise present throughout all the waveform observations. Thus, it may serve as data to estimate the variance of the noise. The estimated variance for all the waveforms assuming Gaussian white noise ranges from 10-6~10-7. This verifies that the level of noise is very low as can be seen in the example waveform and in the reference pulse.
+<figure id="figure1">
+  <title>Reference and example waveforms</title>
+  <media id="idp7025664" alt=""><image src="../../media/reference_pulse75.JPG" mime-type="image/jpeg"/></media>
+</figure></para>   
+  </content>
+  
+</document>

@@ -1,0 +1,29 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Results of Deconvolution</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>ff8f515f-f6c7-4079-8bea-1ecfa61557e9</md:uuid>
+</metadata>
+  <content>
+<para id="para1">    	
+For the purposes of this project, much experimentation was performed in order to define the value for the threshold γ that gives the best results for both inverse and Wiener filtering methods. In addition, much effort was put forth to obtain a meaningful estimate for the variance of the noise under the Gaussian white noise assumption. To this point, one criterion for the effectiveness of each method is subjective observation of the deconvolved waveforms as opposed to the measured ones. The first plot in the following figure is the previously used example measured waveform. The next two plots show the deconvolved waveform (estimate of projection at angle 70), using the inverse and Wiener filter algorithms with appropriate parameters. 
+<figure id="fig2">
+<title>Original, inverse filtered, and weiner filtered signals</title>
+<media id="idm6430304" alt=""><image src="../../media/deconvo_comp_time75.JPG" mime-type="image/jpeg"/></media>
+</figure>					
+</para>
+<para id="para2">
+Certain conclusions can be drawn from the above plots. At first, it is evident that the patterns of the reference THz pulse signal are attenuated from the waveform after the deconvolution process in both cases. This makes the main two pulses of the measured waveform signal (occurring at about 120 and 175 ps), more distinct from the rest of the signal’s features. Intuitively, this will result in a sharper image after reconstruction. Secondly, in the case of the Wiener filtered signal the absence of high frequency noise is obvious. However, since this method balances between inverse filter and noise reduction, the inverse filtering part is weaker. Overall, just inverse filtering the waveforms turns out to give better results and by appropriately choosing the γ constant the noise level is kept at negligible level. Note that after deconvolution the absolute magnitude of the signal is greatly reduced, but this is not an issue for the purpose of reconstruction since relative reflectivity values are used.
+</para>
+<para id="para3">
+A second global criterion is a two dimensional plot of the measured and the deconvolved waveforms as a function of delay and angles.  These sorts of plots are often called sinograms because of the sinusoidal behavior of the features. Each sinogram has 360 columns so that each column is a temporal plot of the estimated projections. 
+<figure id="fig3">
+<title>Sinograms of original, inverse filtered, and weiner filtered signals</title>
+<media id="idm7211008" alt=""><image src="../../media/sinograms75.JPG" mime-type="image/jpeg"/></media>
+</figure>	
+</para>
+<para id="para4">
+Both deconvolved sinograms exhibit sharper main sinusoid patterns, while the ripples behind them are less evident than those observed in the measured waveform sinogram.
+  </para>
+ 
+  </content>
+  
+</document>
